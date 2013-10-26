@@ -35,6 +35,18 @@ def render_json(request, json_values, verbose=False, minify=True):
 
     return render(request, 'growl/json.html', context, status=http_status)
 
+def render_json_500(self, json_values=None):
+    json_values = json_values or self.error_dict(http_status_code=500)
+    json_values['error_code'] = 500
+    return render(request, 'growl/json.html', context, status=500)
+
+# service is down, shields up
+def render_json_503(self, json_values=None):
+    json_values = json_values or self.error_dict(http_status_code=503)
+    json_values['error_code'] = 503
+    json_values['error_msg'] = 'Service not available'
+    return render(request, 'growl/json.html', context, status=503)
+
 ###
 ### PRIVATE
 ###
