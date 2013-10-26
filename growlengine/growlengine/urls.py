@@ -9,6 +9,8 @@ urlpatterns = patterns('',
     # url(r'^$', 'growlengine.views.home', name='home'),
     # url(r'^growlengine/', include('growlengine.foo.urls')),
 
+    url(r'^bootstrap/', include('growl.urls')),
+
     # Uncomment the admin/doc line below to enable admin documentation:
     # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
 
