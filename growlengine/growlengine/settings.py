@@ -1,4 +1,4 @@
-# Django settings for growl project.
+# Django settings for growlengine project.
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
@@ -12,7 +12,7 @@ MANAGERS = ADMINS
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': 'growl',                      # Or path to database file if using sqlite3.
+        'NAME': 'growlengine',                      # Or path to database file if using sqlite3.
         # The following settings are not used with sqlite3:
         'USER': 'aschulak',
         'PASSWORD': '',
@@ -83,7 +83,7 @@ STATICFILES_FINDERS = (
 )
 
 # Make this unique, and don't share it with anybody.
-SECRET_KEY = 's%_zq4%hc81@922&3vy-d1fo%2j@4t+n_19y*oc290%*b==!!3'
+SECRET_KEY = 'f1*wbbf=w0j!b8al_@vyu076#xy%am5r5fe)mq0dd88w@*hn^h'
 
 # List of callables that know how to import templates from various sources.
 TEMPLATE_LOADERS = (
@@ -102,10 +102,10 @@ MIDDLEWARE_CLASSES = (
     # 'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
-ROOT_URLCONF = 'growl.urls'
+ROOT_URLCONF = 'growlengine.urls'
 
 # Python dotted path to the WSGI application used by Django's runserver.
-WSGI_APPLICATION = 'growl.wsgi.application'
+WSGI_APPLICATION = 'growlengine.wsgi.application'
 
 TEMPLATE_DIRS = (
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
