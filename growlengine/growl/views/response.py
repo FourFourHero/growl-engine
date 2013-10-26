@@ -1,6 +1,7 @@
 import json
 
 from django.shortcuts import render
+from growl.external.minify_json import json_minify
 from growl.models import model_encode
 from growl.models import model_encode_verbose
 
@@ -26,8 +27,8 @@ def render_json(request, json_values, verbose=False, minify=True):
     json_dumps = json.dumps(json_values, default=encode)
 
     # minify json for smallest payload
-    #if minify:
-    #    json_dumps = json_minify(json_dumps)
+    if minify:
+        json_dumps = json_minify(json_dumps)
 
     context = {}
     context['json'] = json_dumps
