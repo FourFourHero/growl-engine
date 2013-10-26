@@ -35,16 +35,42 @@ def render_json(request, json_values, verbose=False, minify=True):
 
     return render(request, 'growl/json.html', context, status=http_status)
 
-def render_json_500(self, json_values=None):
+def render_json_500(request, json_values=None, verbose=False, minify=True):
     json_values = json_values or self.error_dict(http_status_code=500)
     json_values['error_code'] = 500
+    json_values['http_status_code'] = 500    
+
+    encode = model_encode
+    if verbose:
+        encode = model_encode_verbose
+    json_dumps = json.dumps(json_values, default=encode)
+
+    # minify json for smallest payload
+    if minify:
+        json_dumps = json_minify(json_dumps)
+
+    context = {}
+    context['json'] = json_dumps
     return render(request, 'growl/json.html', context, status=500)
 
 # service is down, shields up
-def render_json_503(self, json_values=None):
+def render_json_503(request, json_values=None, verbose=False, minify=True):
     json_values = json_values or self.error_dict(http_status_code=503)
     json_values['error_code'] = 503
+    json_values['http_status_code'] = 503        
     json_values['error_msg'] = 'Service not available'
+
+    encode = model_encode
+    if verbose:
+        encode = model_encode_verbose
+    json_dumps = json.dumps(json_values, default=encode)
+
+    # minify json for smallest payload
+    if minify:
+        json_dumps = json_minify(json_dumps)
+
+    context = {}
+    context['json'] = json_dumps
     return render(request, 'growl/json.html', context, status=503)
 
 ###
