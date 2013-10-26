@@ -2,8 +2,11 @@ from django.db import models
 from growl.models.basemodel import BaseModel
 
 class Developer(BaseModel):
-    email = models.EmailField(unique=True, max_length=254)
-    username = models.CharField(unique=True, max_length=256)
+    # TODO make unique
+    #email = models.EmailField(unique=True, max_length=254)
+    #username = models.CharField(unique=True, max_length=256)
+    email = models.EmailField(max_length=254)
+    username = models.CharField(max_length=256)
     first_name = models.CharField(max_length=256)
     last_name = models.CharField(max_length=256)
     password = models.CharField(max_length=256)

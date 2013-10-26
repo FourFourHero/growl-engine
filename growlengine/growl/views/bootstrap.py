@@ -32,7 +32,16 @@ def _create_developer():
     return developer
 
 def _create_game(developer):
-    pass
+    game = Game()
+    game.developer = developer
+    game.name = 'Game name'
+    game.description = 'Game desc'
+    game.save()
+    return game
 
 def _create_player(game):
-    pass
+    player = Player()
+    player.game = game
+
+    player.save()
+    return player
