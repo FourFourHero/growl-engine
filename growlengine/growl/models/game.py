@@ -21,6 +21,9 @@ class Game(BaseModel):
         db_table = 'growl_game'
         app_label = 'growl'
 
+    def __unicode__(self):
+        return self.name
+
     def __json__(self):
         json = {}
         json['id'] = self.id
@@ -32,6 +35,7 @@ class Game(BaseModel):
         return json
 
 def post_save_cache(sender, **kwargs):
+    instance = kwargs.get('instance')
     logger.debug('post save!')
 
 post_save.connect(post_save_cache, sender=Game)

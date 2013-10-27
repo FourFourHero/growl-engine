@@ -27,6 +27,9 @@ class Developer(BaseModel):
         db_table = 'growl_developer'
         app_label = 'growl'
 
+    def __unicode__(self):
+        return self.username
+
     def __json__(self):
         json = {}
         json['id'] = self.id
