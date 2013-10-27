@@ -33,3 +33,9 @@ def get_player_skill_training_plan(player_id):
 def update_player_skill_training_plan(player_skill_training_plan):
     player_skill_training_plan.save() # post_save stores in cache
     return player_skill_training_plan
+
+### Get all active
+def get_all_active_player_skill_training_plans():
+    # TODO cache
+    active_player_skill_training_plans = PlayerSkillTrainingPlan.objects.filter(completed=None)
+    return active_player_skill_training_plans

@@ -12,7 +12,7 @@ class PlayerSkillTrainingPlanManager(models.Manager):
 
 class PlayerSkillTrainingPlan(BaseModel):
     game = models.ForeignKey('Game')
-    player = models.ForeignKey('Player')
+    player = models.ForeignKey('Player', unique=True)
     skill = models.ForeignKey('Skill')
     completed = models.DateTimeField(default=None, null=True) # date this plan completed
     created = models.DateTimeField(auto_now_add=True)

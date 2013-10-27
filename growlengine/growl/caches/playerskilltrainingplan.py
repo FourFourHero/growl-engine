@@ -10,7 +10,7 @@ def get_player_skill_training_plan_from_cache(player_id):
     key = _player_skill_training_plan_cache_key(player_id)
     player_skill_training_plan = cache.get(key)
     if not player_skill_training_plan:
-        logger.debug('cache: player_skill_training_plan not found: ' + player_skill_training_plan_id)
+        logger.debug('cache: player_skill_training_plan not found: ' + str(player_id))
     return player_skill_training_plan
 
 def store_player_skill_training_plan_in_cache(player_skill_training_plan):

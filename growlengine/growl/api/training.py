@@ -5,6 +5,7 @@ from growl.api.skill import get_skill
 from growl.api.playerskill import create_player_skill
 from growl.api.playerskill import get_player_skill
 from growl.api.playerskilltrainingplan import create_player_skill_training_plan
+from growl.api.playerskilltrainingplan import get_player_skill_training_plan
 
 logger = logging.getLogger(__name__)
 
@@ -23,11 +24,20 @@ def train_skill(game, player, skill):
 
     player_skill = get_player_skill(player.id, skill.id)
 
+    # check if player_skill is injected
+    if not player_skill:
+        raise Exception('Skill not injected')
+
     # check if player_skill is maxed out
     if player_skill.level == skill.level_max:
         raise Exception('Skill at max level')
 
-    # TODO check for requirements
+    # TODO check for skill requirements
+
+    # check if there is already a plan
+    player_skill_training_plan = get_player_skill_training_plan(player.id)
+    if player_skill_training_plan:
+        raise Exception('Training plan exists')
 
     player_skill_training_plan = create_player_skill_training_plan(game, player, skill)
     return player_skill_training_plan
