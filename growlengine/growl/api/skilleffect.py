@@ -15,7 +15,7 @@ def create_skill_effect(game, skill,
     skill_effect.skill = skill
     if effect_attribute_change_per_level:
         skill_effect.effect_attribute_change_per_level = effect_attribute_change_per_level
-    if attribute_change_per_level_value
+    if attribute_change_per_level_value:
         skill_effect.attribute_change_per_level_value = attribute_change_per_level_value
     if attribute_change_per_level_attribute_id:
         skill_effect.attribute_change_per_level_attribute_id = attribute_change_per_level_attribute_id
