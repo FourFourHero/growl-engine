@@ -2,6 +2,7 @@ from django.shortcuts import render
 
 from growl.models import *
 from growl.views.response import *
+from growl.logic.attribute import roll_attribute_score
 
 def bootstrap(request):
 
@@ -9,12 +10,14 @@ def bootstrap(request):
     game = _create_game(developer)
     player = _create_player(game)
     attributes = _create_attributes(game)
+    player_attributes = _create_player_attributes(game, player, attributes.values())
 
     response_dict = success_dict()
     response_dict['developer'] = developer
     response_dict['game'] = game
     response_dict['player'] = player
     response_dict['attributes'] = attributes
+    response_dict['player_attributes'] = player_attributes
 
     return render_json(request, response_dict)
 
@@ -100,3 +103,17 @@ def _create_attributes(game):
     attributes['will'] = attr
 
     return attributes
+
+def _create_player_attributes(game, player, attributes):
+    player_attributes = []
+
+    for attribute in attributes:
+        player_attribute = PlayerAttribute()
+        player_attribute.game = game
+        player_attribute.player = player
+        player_attribute.attribute = attribute
+        player_attribute.value = roll_attribute_score(player)
+        player_attribute.save()
+        player_attributes.append(player_attribute)
+
+    return player_attributes
