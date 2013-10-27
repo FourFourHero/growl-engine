@@ -16,12 +16,12 @@ def bootstrap(request):
     game = _create_game(developer)
     player = _create_player(game)
     attributes = _create_attributes(game)
-    traits = _create_traits(game)
+    perks = _create_perks(game)
     resources = _create_resources(game)
     skill_groups = _create_skill_groups(game)
     skills = _create_skills(game, skill_groups, attributes)
 
-    player_traits = _create_player_traits(game, player, traits)
+    player_perks = _create_player_perks(game, player, perks)
     player_attributes = _create_player_attributes(game, player, attributes.values())
     player_resources = _create_player_resources(game, player, resources)
 
@@ -30,11 +30,11 @@ def bootstrap(request):
     response_dict['game'] = game
     response_dict['player'] = player
     response_dict['attributes'] = attributes
-    response_dict['traits'] = traits
+    response_dict['perks'] = perks
     response_dict['resources'] = resources
     response_dict['skill_groups'] = skill_groups
     response_dict['skills'] = skills
-    response_dict['player_traits'] = player_traits
+    response_dict['player_perks'] = player_perks
     response_dict['player_attributes'] = player_attributes
     response_dict['player_resources'] = player_resources
 
@@ -86,20 +86,20 @@ def _create_attributes(game):
 
     return attributes
 
-def _create_traits(game):
-    traits = []
+def _create_perks(game):
+    perks = []
 
-    trait = Trait()
-    trait.game = game
-    trait.name = 'Developer Access'
-    trait.description = 'Sweet goodies for joining the game in its infancy'
-    trait.choosable = False
-    trait.effect_access_skill_group = False
-    trait.access_skill_group = -1
-    trait.save()
-    traits.append(trait)
+    perk = Perk()
+    perk.game = game
+    perk.name = 'Developer Access'
+    perk.description = 'Sweet goodies for joining the game in its infancy'
+    perk.choosable = False
+    perk.effect_access_skill_group = False
+    perk.access_skill_group = -1
+    perk.save()
+    perks.append(perk)
 
-    return traits
+    return perks
 
 def _create_resources(game):
     resources = []
@@ -144,18 +144,18 @@ def _create_skills(game, skill_groups, attributes):
 
     return skills
 
-def _create_player_traits(game, player, traits):
-    player_traits = []
+def _create_player_perks(game, player, perks):
+    player_perks = []
 
-    for trait in traits:
-        player_trait = PlayerTrait()
-        player_trait.game = game
-        player_trait.player = player
-        player_trait.trait = trait
-        player_trait.save()
-        player_traits.append(player_trait)
+    for perk in perks:
+        player_perk = PlayerPerk()
+        player_perk.game = game
+        player_perk.player = player
+        player_perk.perk = perk
+        player_perk.save()
+        player_perks.append(player_perk)
 
-    return player_traits
+    return player_perks
 
 def _create_player_attributes(game, player, attributes):
     player_attributes = []
