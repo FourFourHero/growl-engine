@@ -11,9 +11,9 @@ def create_resource(game, name, description, value_min=None, value_max=None):
     resource.game = game
     resource.name = name
     resource.description = description
-    if value_min:
+    if value_min is not None:
         resource.value_min = value_min
-    if value_max:
+    if value_max is not None:
         resource.value_max = value_max
     resource.save() # post_save stores in cache
     return resource

@@ -13,11 +13,11 @@ def create_skill_effect(game, skill,
     skill_effect = SkillEffect()
     skill_effect.game = game
     skill_effect.skill = skill
-    if effect_attribute_change_per_level:
+    if effect_attribute_change_per_level is not None:
         skill_effect.effect_attribute_change_per_level = effect_attribute_change_per_level
-    if attribute_change_per_level_value:
+    if attribute_change_per_level_value is not None:
         skill_effect.attribute_change_per_level_value = attribute_change_per_level_value
-    if attribute_change_per_level_attribute_id:
+    if attribute_change_per_level_attribute_id is not None:
         skill_effect.attribute_change_per_level_attribute_id = attribute_change_per_level_attribute_id
     skill_effect.save() # post_save stores in cache
     return skill_effect

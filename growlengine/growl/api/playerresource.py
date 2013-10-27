@@ -11,7 +11,7 @@ def create_player_resource(game, player, resource, value=None):
     player_resource.game = game
     player_resource.player = player
     player_resource.resource = resource
-    if value:
+    if value is not None:
         player_resource.value = value
     player_resource.save() # post_save stores in cache
     return player_resource

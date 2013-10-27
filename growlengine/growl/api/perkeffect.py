@@ -11,9 +11,9 @@ def create_perk_effect(game, perk, effect_access_skill_group=None,
     perk_effect = PerkEffect()
     perk_effect.game = game
     perk_effect.perk = perk
-    if effect_access_skill_group:
+    if effect_access_skill_group is not None:
         perk_effect.effect_access_skill_group = effect_access_skill_group
-    if access_skill_group_id:
+    if access_skill_group_id is not None:
         perk_effect.access_skill_group_id = access_skill_group_id
     perk_effect.save() # post_save stores in cache
     return perk_effect

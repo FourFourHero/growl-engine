@@ -11,7 +11,7 @@ def create_perk(game, name, description, choosable=None):
     perk.game = game
     perk.name = name
     perk.description = description
-    if choosable:
+    if choosable is not None:
         perk.choosable = choosable
     perk.save() # post_save stores in cache
     return perk

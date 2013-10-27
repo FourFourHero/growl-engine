@@ -11,7 +11,7 @@ def create_player_attribute(game, player, attribute, value=None):
     player_attribute.game = game
     player_attribute.player = player
     player_attribute.attribute = attribute
-    if value:
+    if value is not None:
         player_attribute.value = value
     player_attribute.save() # post_save stores in cache
     return player_attribute

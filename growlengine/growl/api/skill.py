@@ -23,21 +23,21 @@ def create_skill(game, skill_group, name, description,
     skill.skill_group = skill_group
     skill.attribute_primary = attribute_primary
     skill.attribute_secondary = attribute_secondary
-    if skill_points_cost:
+    if skill_points_cost is not None:
         skill.skill_points_cost = skill_points_cost
-    if skill_points_cost_level_multiplier:
+    if skill_points_cost_level_multiplier is not None:
         skill.skill_points_cost_level_multiplier = skill_points_cost_level_multiplier
-    if skill_points_cost_difficulty_multiplier:
+    if skill_points_cost_difficulty_multiplier is not None:
         skill.skill_points_cost_difficulty_multiplier = skill_points_cost_difficulty_multiplier
-    if level_max:
+    if level_max is not None:
         skill.level_max = level_max
-    if skill_requirement_primary_id:
+    if skill_requirement_primary_id is not None:
         skill.skill_requirement_primary_id = skill_requirement_primary_id
-    if skill_requirement_primary_level:
+    if skill_requirement_primary_level is not None:
         skill.skill_requirement_primary_level = skill_requirement_primary_level
-    if skill_requirement_secondary_id:
+    if skill_requirement_secondary_id is not None:
         skill.skill_requirement_secondary_id = skill_requirement_secondary_id
-    if skill_requirement_secondary_level:
+    if skill_requirement_secondary_level is not None:
         skill.skill_requirement_secondary_level = skill_requirement_secondary_level
     skill.save() # post_save stores in cache
     return skill
