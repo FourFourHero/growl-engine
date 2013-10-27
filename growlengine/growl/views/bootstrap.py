@@ -136,9 +136,9 @@ def _create_skills(game, skill_groups, attributes):
     skill.skill_points_cost_difficulty_multiplier = 1
     skill.attribute_primary = attributes['will']
     skill.attribute_secondary = attributes['per']
-    skill.effect_attribute_change_per_level = True
-    skill.attribute_change_per_level_value = 1
-    skill.attribute_change_per_level_attribute_id = attributes['per'].id
+    #skill.effect_attribute_change_per_level = True
+    #skill.attribute_change_per_level_value = 1
+    #skill.attribute_change_per_level_attribute_id = attributes['per'].id
     skill.save()
     skills.append(skill)
 

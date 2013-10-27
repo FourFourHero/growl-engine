@@ -27,12 +27,6 @@ class Skill(BaseModel):
     skill_requirement_secondary_level = models.IntegerField(default=None, null=True)
     created = models.DateTimeField(auto_now_add=True)
     modified = models.DateTimeField(auto_now=True, auto_now_add=True)
-
-    # effects
-    effect_attribute_change_per_level = models.BooleanField(default=False)
-    attribute_change_per_level_value = models.IntegerField(default=0)
-    attribute_change_per_level_attribute_id = models.IntegerField(default=None, null=True)
-
     objects = SkillManager()
 
     class Meta:
@@ -59,10 +53,6 @@ class Skill(BaseModel):
         json['skill_requirement_primary_level'] = self.skill_requirement_primary_level
         json['skill_requirement_secondary_id'] = self.skill_requirement_secondary_id
         json['skill_requirement_secondary_level'] = self.skill_requirement_secondary_level
-        # effects
-        json['effect_attribute_change_per_level'] = str(self.effect_attribute_change_per_level)
-        json['attribute_change_per_level_value'] = self.attribute_change_per_level_value
-        json['attribute_change_per_level_attribute_id'] = self.attribute_change_per_level_attribute_id
         #json['created'] = str(self.created)
         #json['modified'] = str(self.modified)
 
