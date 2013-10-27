@@ -105,6 +105,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
     # Uncomment the next line for simple clickjacking protection:
     # 'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'rollbar.contrib.django.middleware.RollbarNotifierMiddleware',
 )
 
 ROOT_URLCONF = 'growlengine.urls'
@@ -178,8 +179,18 @@ from datetime import timedelta
 CELERYBEAT_SCHEDULE = {
     'skill-train-every-60-seconds': {
         'task': 'growl.tasks.skilltrain.task_skill_train',
-        'schedule': timedelta(seconds=60)
+        'schedule': timedelta(seconds=10)
     },
 }
 
+###
+### ROLLBAR
+###
+
+ROLLBAR = {
+    'access_token': '759bf3582e174b1dbfd120bad9ab72a9',
+    'environment': 'development' if DEBUG else 'production',
+    'branch': 'master',
+    'root': '/Users/aschulak/workspace/growl-engine/growlengine',
+}
 

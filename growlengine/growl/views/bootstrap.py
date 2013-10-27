@@ -9,7 +9,6 @@ from growl.logic.attribute import roll_attribute_score
 logger = logging.getLogger(__name__)
 
 def bootstrap(request):
-
     developer = _create_developer()
     game = _create_game(developer)
     player = _create_player(game)
