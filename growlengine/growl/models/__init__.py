@@ -1,4 +1,5 @@
 from basemodel import BaseModel
+from attribute import Attribute
 from developer import Developer
 from game import Game
 from player import Player
