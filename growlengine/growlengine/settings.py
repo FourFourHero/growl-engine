@@ -130,7 +130,7 @@ INSTALLED_APPS = (
     # Uncomment the next line to enable admin documentation:
     'django.contrib.admindocs',
     'south',
-    #'djcelery',
+    'djcelery',
     'growl',
 )
 
@@ -166,3 +166,20 @@ LOGGING = {
         },
     }
 }
+
+###
+### CELERY
+###
+
+BROKER_URL = 'amqp://guest:guest@localhost:5672/'
+
+from datetime import timedelta
+
+CELERYBEAT_SCHEDULE = {
+    'skill-train-every-60-seconds': {
+        'task': 'growl.tasks.skilltrain.task_skill_train',
+        'schedule': timedelta(seconds=60)
+    },
+}
+
+

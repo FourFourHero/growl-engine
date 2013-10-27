@@ -2,3 +2,4 @@
 
 *.DS_Store
 *.db
+celerybeat_schedule
