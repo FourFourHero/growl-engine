@@ -3,6 +3,7 @@ import logging
 from django.db import models
 from django.db.models.signals import post_save
 from growl.models.basemodel import BaseModel
+from growl.caches.game import store_game_in_cache
 
 logger = logging.getLogger(__name__)
 
@@ -35,7 +36,9 @@ class Game(BaseModel):
         return json
 
 def post_save_cache(sender, **kwargs):
-    instance = kwargs.get('instance')
-    logger.debug('post save!')
+    logger.debug('post_save start')
+    game = kwargs.get('instance')
+    store_game_in_cache(game)
+    logger.debug('post_save end')
 
 post_save.connect(post_save_cache, sender=Game)

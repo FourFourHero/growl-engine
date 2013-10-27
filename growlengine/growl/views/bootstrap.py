@@ -5,6 +5,7 @@ from django.shortcuts import render
 from growl.models import *
 from growl.views.response import *
 from growl.logic.attribute import roll_attribute_score
+from growl.api.game import create_game
 
 logger = logging.getLogger(__name__)
 
@@ -53,11 +54,7 @@ def _create_developer():
     return developer
 
 def _create_game(developer):
-    game = Game()
-    game.developer = developer
-    game.name = 'Game name'
-    game.description = 'Game desc'
-    game.save()
+    game = create_game(developer, 'Game name', 'Game desc')
     return game
 
 def _create_player(game):
