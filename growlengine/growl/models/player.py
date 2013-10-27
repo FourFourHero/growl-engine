@@ -12,7 +12,7 @@ class PlayerManager(models.Manager):
 
 class Player(BaseModel):
     game = models.ForeignKey('Game')
-    client_player_id = models.CharField(max_length=256)
+    client_player_id = models.CharField(max_length=256, null=True)
     created = models.DateTimeField(auto_now_add=True)
     modified = models.DateTimeField(auto_now=True, auto_now_add=True)
     objects = PlayerManager()

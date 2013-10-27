@@ -6,6 +6,7 @@ from growl.models import *
 from growl.views.response import *
 from growl.logic.attribute import roll_attribute_score
 from growl.api.game import create_game
+from growl.api.player import create_player
 
 logger = logging.getLogger(__name__)
 
@@ -58,10 +59,7 @@ def _create_game(developer):
     return game
 
 def _create_player(game):
-    player = Player()
-    player.game = game
-
-    player.save()
+    player = create_player(game)
     return player
 
 def _create_attributes(game):

@@ -21,17 +21,17 @@ class Skill(BaseModel):
     skill_points_cost_level_multiplier = models.IntegerField(default=5)
     skill_points_cost_difficulty_multiplier = models.IntegerField(default=1)
     level_max = models.IntegerField(default=5)
-    skill_requirement_primary_id = models.IntegerField(default=-1)
-    skill_requirement_primary_level = models.IntegerField(default=-1)
-    skill_requirement_secondary_id = models.IntegerField(default=-1)
-    skill_requirement_secondary_level = models.IntegerField(default=-1)
+    skill_requirement_primary_id = models.IntegerField(default=None, null=True)
+    skill_requirement_primary_level = models.IntegerField(default=None, null=True)
+    skill_requirement_secondary_id = models.IntegerField(default=None, null=True)
+    skill_requirement_secondary_level = models.IntegerField(default=None, null=True)
     created = models.DateTimeField(auto_now_add=True)
     modified = models.DateTimeField(auto_now=True, auto_now_add=True)
 
     # effects
     effect_attribute_change_per_level = models.BooleanField(default=False)
     attribute_change_per_level_value = models.IntegerField(default=0)
-    attribute_change_per_level_attribute_id = models.IntegerField(default=-1)
+    attribute_change_per_level_attribute_id = models.IntegerField(default=None, null=True)
 
     objects = SkillManager()
 

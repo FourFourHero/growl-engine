@@ -3,7 +3,7 @@ Run the server
 
 Schema migrations
 
-	python manage.py schemamigration myapp --auto
+	python manage.py schemamigration growl --auto
 	python manage.py migrate growl
 	
 Celery tasks
