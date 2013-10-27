@@ -3,6 +3,7 @@ from attribute import Attribute
 from developer import Developer
 from game import Game
 from player import Player
+from playerattribute import PlayerAttribute
 
 def model_encode(obj):
     enc = None
