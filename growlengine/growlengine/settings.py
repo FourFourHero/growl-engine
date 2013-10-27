@@ -187,9 +187,11 @@ CELERYBEAT_SCHEDULE = {
 ### ROLLBAR
 ###
 
+ROLLBAR_ENV = 'development' if DEBUG else 'production'
+
 ROLLBAR = {
     'access_token': '759bf3582e174b1dbfd120bad9ab72a9',
-    'environment': 'development' if DEBUG else 'production',
+    'environment': ROLLBAR_ENV,
     'branch': 'master',
     'root': '/Users/aschulak/workspace/growl-engine/growlengine',
 }
