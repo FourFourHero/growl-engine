@@ -6,12 +6,13 @@ from growl.caches.perk import store_perk_in_cache
 logger = logging.getLogger(__name__)
 
 ### Create perk
-def create_perk(game, name, description, choosable=True):
+def create_perk(game, name, description, choosable=None):
     perk = Perk()
     perk.game = game
     perk.name = name
     perk.description = description
-    perk.choosable = choosable
+    if choosable:
+        perk.choosable = choosable
     perk.save() # post_save stores in cache
     return perk
 

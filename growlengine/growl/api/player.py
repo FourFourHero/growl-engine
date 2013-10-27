@@ -9,7 +9,8 @@ logger = logging.getLogger(__name__)
 def create_player(game, client_player_id=None):
     player = Player()
     player.game = game
-    player.client_player_id = client_player_id
+    if client_player_id:
+        player.client_player_id = client_player_id
     player.save() # post_save stores in cache
     return player
 

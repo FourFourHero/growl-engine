@@ -6,12 +6,13 @@ from growl.caches.playerresource import store_player_resource_in_cache
 logger = logging.getLogger(__name__)
 
 ### Create player_resource
-def create_player_resource(game, player, resource, value=0):
+def create_player_resource(game, player, resource, value=None):
     player_resource = PlayerResource()
     player_resource.game = game
     player_resource.player = player
     player_resource.resource = resource
-    player_resource.value = value
+    if value:
+        player_resource.value = value
     player_resource.save() # post_save stores in cache
     return player_resource
 

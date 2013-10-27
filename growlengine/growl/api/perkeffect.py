@@ -6,13 +6,15 @@ from growl.caches.perkeffect import store_perk_effect_in_cache
 logger = logging.getLogger(__name__)
 
 ### Create perk_effect
-def create_perk_effect(game, perk, effect_access_skill_group= False,
-                       access_skill_group_id=-1):
+def create_perk_effect(game, perk, effect_access_skill_group=None,
+                       access_skill_group_id=None):
     perk_effect = PerkEffect()
     perk_effect.game = game
     perk_effect.perk = perk
-    perk_effect.effect_access_skill_group = effect_access_skill_group
-    perk_effect.access_skill_group_id = access_skill_group_id
+    if effect_access_skill_group:
+        perk_effect.effect_access_skill_group = effect_access_skill_group
+    if access_skill_group_id:
+        perk_effect.access_skill_group_id = access_skill_group_id
     perk_effect.save() # post_save stores in cache
     return perk_effect
 

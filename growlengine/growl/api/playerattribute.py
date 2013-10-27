@@ -6,12 +6,13 @@ from growl.caches.playerattribute import store_player_attribute_in_cache
 logger = logging.getLogger(__name__)
 
 ### Create player_attribute
-def create_player_attribute(game, player, attribute, value=0):
+def create_player_attribute(game, player, attribute, value=None):
     player_attribute = PlayerAttribute()
     player_attribute.game = game
     player_attribute.player = player
     player_attribute.attribute = attribute
-    player_attribute.value = value
+    if value:
+        player_attribute.value = value
     player_attribute.save() # post_save stores in cache
     return player_attribute
 

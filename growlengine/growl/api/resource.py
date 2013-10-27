@@ -6,13 +6,15 @@ from growl.caches.resource import store_resource_in_cache
 logger = logging.getLogger(__name__)
 
 ### Create resource
-def create_resource(game, name, description, value_min=0, value_max=-1):
+def create_resource(game, name, description, value_min=None, value_max=None):
     resource = Resource()
     resource.game = game
     resource.name = name
     resource.description = description
-    resource.value_min = value_min
-    resource.value_max = value_max
+    if value_min:
+        resource.value_min = value_min
+    if value_max:
+        resource.value_max = value_max
     resource.save() # post_save stores in cache
     return resource
 

@@ -10,7 +10,8 @@ def create_game(developer, name, description=None):
     game = Game()
     game.developer = developer
     game.name = name
-    game.description = description
+    if description:
+        game.description = description
     game.save() # post_save stores in cache
     return game
 
