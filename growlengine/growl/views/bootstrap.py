@@ -7,6 +7,7 @@ from growl.views.response import *
 from growl.logic.attribute import roll_attribute_score
 from growl.api.game import create_game
 from growl.api.player import create_player
+from growl.api.attribute import create_attribute
 
 logger = logging.getLogger(__name__)
 
@@ -65,52 +66,22 @@ def _create_player(game):
 def _create_attributes(game):
     attributes = {}
 
-    attr = Attribute()
-    attr.game = game
-    attr.slug = 'mem'
-    attr.name = 'Memory'
-    attr.description = 'Memory desc'
-    attr.save()
+    attr = create_attribute(game, 'Memory', 'mem', 'Memory desc', 3, 18)
     attributes['mem'] = attr
 
-    attr = Attribute()
-    attr.game = game
-    attr.slug = 'pres'
-    attr.name = 'Presence'
-    attr.description = 'Presence desc'
-    attr.save()
+    attr = create_attribute(game, 'Presence', 'pres', 'Presence desc', 3, 18)
     attributes['pres'] = attr
 
-    attr = Attribute()
-    attr.game = game
-    attr.slug = 'init'
-    attr.name = 'Initiative'
-    attr.description = 'Initiative desc'
-    attr.save()
+    attr = create_attribute(game, 'Initiative', 'init', 'Initiative desc', 3, 18)
     attributes['init'] = attr
 
-    attr = Attribute()
-    attr.game = game
-    attr.slug = 'per'
-    attr.name = 'Perception'
-    attr.description = 'Perception desc'
-    attr.save()
+    attr = create_attribute(game, 'Perception', 'per', 'Perception desc', 3, 18)
     attributes['per'] = attr
 
-    attr = Attribute()
-    attr.game = game
-    attr.slug = 'int'
-    attr.name = 'Intelligence'
-    attr.description = 'Intelligence desc'
-    attr.save()
+    attr = create_attribute(game, 'Intelligence', 'int', 'Intelligence desc', 3, 18)
     attributes['int'] = attr
 
-    attr = Attribute()
-    attr.game = game
-    attr.slug = 'will'
-    attr.name = 'Willpower'
-    attr.description = 'Willpower desc'
-    attr.save()
+    attr = create_attribute(game, 'Willpower', 'will', 'Willpower desc', 3, 18)
     attributes['will'] = attr
 
     return attributes
