@@ -7,6 +7,7 @@ from growl.views.response import *
 from growl.logic.attribute import roll_attribute_score
 from growl.api.game import create_game
 from growl.api.player import create_player
+from growl.api.playerattribute import create_player_attribute
 from growl.api.playerresource import create_player_resource
 from growl.api.attribute import create_attribute
 from growl.api.perk import create_perk
@@ -150,12 +151,8 @@ def _create_player_attributes(game, player, attributes):
     player_attributes = []
 
     for attribute in attributes:
-        player_attribute = PlayerAttribute()
-        player_attribute.game = game
-        player_attribute.player = player
-        player_attribute.attribute = attribute
-        player_attribute.value = roll_attribute_score(player)
-        player_attribute.save()
+        attribute_score = roll_attribute_score(player)
+        player_attribute = create_player_attribute(game, player, attribute, value=attribute_score)
         player_attributes.append(player_attribute)
 
     return player_attributes
