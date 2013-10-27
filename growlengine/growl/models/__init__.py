@@ -6,6 +6,7 @@ from player import Player
 from playerattribute import PlayerAttribute
 from playerresource import PlayerResource
 from playerskill import PlayerSkill
+from playerskilltrainingplan import PlayerSkillTrainingPlan
 from playertrait import PlayerTrait
 from resource import Resource
 from skill import Skill

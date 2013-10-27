@@ -67,6 +67,23 @@ class Skill(BaseModel):
 
         return json
 
+        def get_skill_points_for_level(self, level):
+            return int((self.skill_points_cost * self.skill_points_cost_difficulty_multiplier) * math.pow(self.skill_points_cost_level_multiplier,level-1))
+
+        def get_level_for_skill_points(self, trained_skill_points):
+            if trained_skill_points <= 0:
+                return 0
+
+            skill_level = 0
+            level = 1
+            while level <= self.level_max:
+                skill_points_for_level = self.get_skill_points_for_level(level)
+                if trained_skill_points >= skill_points_for_level:
+                    skill_level = level
+                level += 1
+
+            return skill_level
+
 def post_save_cache(sender, **kwargs):
     instance = kwargs.get('instance')
     logger.debug('post save!')
