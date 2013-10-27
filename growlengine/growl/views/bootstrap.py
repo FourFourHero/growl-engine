@@ -10,6 +10,7 @@ from growl.api.player import create_player
 from growl.api.attribute import create_attribute
 from growl.api.perk import create_perk
 from growl.api.perkeffect import create_perk_effect
+from growl.api.skill import create_skill
 
 logger = logging.getLogger(__name__)
 
@@ -125,18 +126,8 @@ def _create_skill_groups(game):
 def _create_skills(game, skill_groups, attributes):
     skills = []
 
-    skill = Skill()
-    skill.game = game
-    skill.name = 'Legendary Perception'
-    skill.description = 'Legendary Perception desc'
-    skill.skill_group = skill_groups[0]
-    skill.skill_points_cost_difficulty_multiplier = 1
-    skill.attribute_primary = attributes['will']
-    skill.attribute_secondary = attributes['per']
-    #skill.effect_attribute_change_per_level = True
-    #skill.attribute_change_per_level_value = 1
-    #skill.attribute_change_per_level_attribute_id = attributes['per'].id
-    skill.save()
+    skill = create_skill(game, skill_groups[0], 'Legendary Perception',
+        'Legendary Perception desc', attributes['will'], attributes['per'])
     skills.append(skill)
 
     return skills
