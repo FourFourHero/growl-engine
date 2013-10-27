@@ -11,6 +11,7 @@ from growl.api.attribute import create_attribute
 from growl.api.perk import create_perk
 from growl.api.perkeffect import create_perk_effect
 from growl.api.skill import create_skill
+from growl.api.skilleffect import create_skill_effect
 from growl.api.skillgroup import create_skill_group
 
 logger = logging.getLogger(__name__)
@@ -125,6 +126,11 @@ def _create_skills(game, skill_groups, attributes):
 
     skill = create_skill(game, skill_groups[0], 'Legendary Perception',
         'Legendary Perception desc', attributes['will'], attributes['per'])
+
+    skill_effect = create_skill_effect(game, skill,
+        effect_attribute_change_per_level=True, attribute_change_per_level_value=1,
+        attribute_change_per_level_attribute_id=attributes['per'].id)
+    skill.skill_effect = skill_effect
     skills.append(skill)
 
     return skills

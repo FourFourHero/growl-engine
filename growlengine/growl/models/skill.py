@@ -53,6 +53,10 @@ class Skill(BaseModel):
         json['skill_requirement_primary_level'] = self.skill_requirement_primary_level
         json['skill_requirement_secondary_id'] = self.skill_requirement_secondary_id
         json['skill_requirement_secondary_level'] = self.skill_requirement_secondary_level
+        try:
+            json['skill_effect'] = self.skill_effect
+        except:
+            pass
         #json['created'] = str(self.created)
         #json['modified'] = str(self.modified)
 

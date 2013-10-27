@@ -28,7 +28,7 @@ class SkillEffect(BaseModel):
         app_label = 'growl'
 
     def __unicode__(self):
-        return self.name
+        return str(self.id)
 
     def __json__(self):
         json = {}
