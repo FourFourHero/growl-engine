@@ -17,7 +17,7 @@ def create_player(game, client_player_id=None):
 def get_player(player_id):
     player = get_player_from_cache(player_id)
     if not player:
-        player = Game.objects.get(pk=player_id)
+        player = Player.objects.get(pk=player_id)
         store_player_in_cache(player)
     return player
 

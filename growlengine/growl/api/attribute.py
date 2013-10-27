@@ -21,7 +21,7 @@ def create_attribute(game, name, slug, description, value_min, value_max):
 def get_attribute(attribute_id):
     attribute = get_attribute_from_cache(attribute_id)
     if not attribute:
-        attribute = Game.objects.get(pk=attribute_id)
+        attribute = Attribute.objects.get(pk=attribute_id)
         store_attribute_in_cache(attribute)
     return attribute
 
