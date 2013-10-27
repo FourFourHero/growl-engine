@@ -10,6 +10,7 @@ from growl.api.player import create_player
 from growl.api.attribute import create_attribute
 from growl.api.perk import create_perk
 from growl.api.perkeffect import create_perk_effect
+from growl.api.resource import create_resource
 from growl.api.skill import create_skill
 from growl.api.skilleffect import create_skill_effect
 from growl.api.skillgroup import create_skill_group
@@ -104,11 +105,7 @@ def _create_perks(game):
 def _create_resources(game):
     resources = []
 
-    resource = Resource()
-    resource.game = game
-    resource.name = 'Prestige'
-    resource.description = 'Widespread respect and admiration felt for someone or something on the basis of a perception of their achievements or quality.'
-    resource.save()
+    resource = create_resource(game, 'Prestige', 'Widespread respect and admiration felt for someone or something on the basis of a perception of their achievements or quality.')
     resources.append(resource)
 
     return resources
