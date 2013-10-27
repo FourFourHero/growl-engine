@@ -3,36 +3,40 @@ import logging
 from django.db import models
 from django.db.models.signals import post_save
 from growl.models.basemodel import BaseModel
-from growl.caches.perk import store_perk_in_cache
+from growl.caches.perkeffect import store_perk_effect_in_cache
 
 logger = logging.getLogger(__name__)
 
-class PerkManager(models.Manager):
+class PerkEffectManager(models.Manager):
     pass
 
-class Perk(BaseModel):
+class PerkEffect(BaseModel):
     game = models.ForeignKey('Game')
-    name = models.CharField(max_length=256)
-    description = models.TextField()
-    choosable = models.BooleanField(default=True)
+    perk = models.ForeignKey('Perk')
+
+    # effects
+    effect_access_skill_group = models.BooleanField(default=False)
+    access_skill_group_id = models.IntegerField(default=-1)
+
     created = models.DateTimeField(auto_now_add=True)
     modified = models.DateTimeField(auto_now=True, auto_now_add=True)
-    objects = PerkManager()
+    objects = PerkEffectManager()
 
     class Meta:
-        db_table = 'growl_perk'
+        db_table = 'growl_perk_effect'
         app_label = 'growl'
 
     def __unicode__(self):
-        return self.name
+        return str(self.id)
 
     def __json__(self):
         json = {}
         json['id'] = self.id
         json['game_id'] = self.game_id
-        json['name'] = self.name
-        json['description'] = self.description
-        json['choosable'] = str(self.choosable)
+        json['perk_id'] = self.perk_id
+        # effects
+        json['effect_access_skill_group'] = str(self.effect_access_skill_group)
+        json['access_skill_group_id'] = self.access_skill_group_id
         #json['created'] = str(self.created)
         #json['modified'] = str(self.modified)
 
@@ -40,7 +44,7 @@ class Perk(BaseModel):
 
 def post_save_cache(sender, **kwargs):
     instance = kwargs.get('instance')
-    store_perk_in_cache(instance)
+    store_perk_effect_in_cache(instance)
     logger.debug('post save!')
 
-post_save.connect(post_save_cache, sender=Perk)
+post_save.connect(post_save_cache, sender=PerkEffect)

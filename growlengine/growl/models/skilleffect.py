@@ -10,17 +10,17 @@ logger = logging.getLogger(__name__)
 class SkillEffectManager(models.Manager):
     pass
 
-class Skill(BaseModel):
+class SkillEffect(BaseModel):
     game = models.ForeignKey('Game')
     skill = models.ForeignKey('Skill')
-    created = models.DateTimeField(auto_now_add=True)
-    modified = models.DateTimeField(auto_now=True, auto_now_add=True)
 
     # effects
     effect_attribute_change_per_level = models.BooleanField(default=False)
     attribute_change_per_level_value = models.IntegerField(default=0)
     attribute_change_per_level_attribute_id = models.IntegerField(default=None, null=True)
 
+    created = models.DateTimeField(auto_now_add=True)
+    modified = models.DateTimeField(auto_now=True, auto_now_add=True)
     objects = SkillEffectManager()
 
     class Meta:
