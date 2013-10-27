@@ -14,6 +14,7 @@ class PlayerResource(BaseModel):
     game = models.ForeignKey('Game')
     player = models.ForeignKey('Player')
     resource = models.ForeignKey('Resource')
+    value = models.IntegerField(default=0)
     created = models.DateTimeField(auto_now_add=True)
     modified = models.DateTimeField(auto_now=True, auto_now_add=True)
     objects = PlayerResourceManager()
@@ -31,6 +32,7 @@ class PlayerResource(BaseModel):
         json['game_id'] = self.game_id
         json['player_id'] = self.player_id
         json['resource_id'] = self.resource_id
+        json['value'] = self.value
         #json['created'] = str(self.created)
         #json['modified'] = str(self.modified)
 
