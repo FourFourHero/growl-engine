@@ -12,7 +12,9 @@ class PlayerSkillTrainingPlanManager(models.Manager):
 
 class PlayerSkillTrainingPlan(BaseModel):
     game = models.ForeignKey('Game')
-    player_skill = models.ForeignKey('PlayerSkill')
+    player = models.ForeignKey('Player')
+    skill = models.ForeignKey('Skill')
+    completed = models.DateTimeField(default=None, null=True) # date this plan completed
     created = models.DateTimeField(auto_now_add=True)
     modified = models.DateTimeField(auto_now=True, auto_now_add=True)
     objects = PlayerSkillTrainingPlanManager()
@@ -28,7 +30,9 @@ class PlayerSkillTrainingPlan(BaseModel):
         json = {}
         json['id'] = self.id
         json['game_id'] = self.game_id
-        json['player_skill_id'] = self.player_skill_id
+        json['player_id'] = self.player_id
+        json['skill_id'] = self.skill_id
+        json['completed'] = str(self.completed)
         #json['created'] = str(self.created)
         #json['modified'] = str(self.modified)
 
