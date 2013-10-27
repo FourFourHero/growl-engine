@@ -1,8 +1,7 @@
 import logging
 
 from django.shortcuts import render
-
-from growl.models import *
+from growl.models import Developer
 from growl.views.response import *
 from growl.logic.attribute import roll_attribute_score
 from growl.api.game import create_game
