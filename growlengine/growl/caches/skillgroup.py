@@ -27,4 +27,4 @@ def delete_skill_group_from_cache(skill_group_id):
 ###
 
 def _skill_group_cache_key(skill_group_id):
-    return 'growl' + ':' + 'SkillGroup:' + skill_group_id
+    return 'growl' + ':' + 'SkillGroup:' + str(skill_group_id)

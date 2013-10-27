@@ -27,4 +27,4 @@ def delete_resource_from_cache(resource_id):
 ###
 
 def _resource_cache_key(resource_id):
-    return 'growl' + ':' + 'Resource:' + resource_id
+    return 'growl' + ':' + 'Resource:' + str(resource_id)

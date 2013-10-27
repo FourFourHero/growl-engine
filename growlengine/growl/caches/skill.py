@@ -27,4 +27,4 @@ def delete_skill_from_cache(skill_id):
 ###
 
 def _skill_cache_key(skill_id):
-    return 'growl' + ':' + 'Skill:' + skill_id
+    return 'growl' + ':' + 'Skill:' + str(skill_id)

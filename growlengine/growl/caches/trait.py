@@ -27,4 +27,4 @@ def delete_trait_from_cache(trait_id):
 ###
 
 def _trait_cache_key(trait_id):
-    return 'growl' + ':' + 'Trait:' + trait_id
+    return 'growl' + ':' + 'Trait:' + str(trait_id)

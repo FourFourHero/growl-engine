@@ -27,4 +27,4 @@ def delete_attribute_from_cache(attribute_id):
 ###
 
 def _attribute_cache_key(attribute_id):
-    return 'growl' + ':' + 'Attribute:' + attribute_id
+    return 'growl' + ':' + 'Attribute:' + str(attribute_id)

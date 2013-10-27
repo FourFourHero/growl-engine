@@ -27,4 +27,4 @@ def delete_game_from_cache(game_id):
 ###
 
 def _game_cache_key(game_id):
-    return 'growl' + ':' + 'Game:' + game_id
+    return 'growl' + ':' + 'Game:' + str(game_id)

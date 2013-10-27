@@ -27,4 +27,4 @@ def delete_player_from_cache(player_id):
 ###
 
 def _player_cache_key(player_id):
-    return 'growl' + ':' + 'Player:' + player_id
+    return 'growl' + ':' + 'Player:' + str(player_id)
