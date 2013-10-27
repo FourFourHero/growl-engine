@@ -8,6 +8,8 @@ from growl.logic.attribute import roll_attribute_score
 from growl.api.game import create_game
 from growl.api.player import create_player
 from growl.api.attribute import create_attribute
+from growl.api.perk import create_perk
+from growl.api.perkeffect import create_perk_effect
 
 logger = logging.getLogger(__name__)
 
@@ -89,14 +91,9 @@ def _create_attributes(game):
 def _create_perks(game):
     perks = []
 
-    perk = Perk()
-    perk.game = game
-    perk.name = 'Developer Access'
-    perk.description = 'Sweet goodies for joining the game in its infancy'
-    perk.choosable = False
-    perk.effect_access_skill_group = False
-    perk.access_skill_group = -1
-    perk.save()
+    perk = create_perk(game, 'Developer Access','Sweet goodies for joining the game in its infancy', choosable=False)
+    perk_effect = create_perk_effect(game, perk)
+    perk.perk_effect = perk_effect
     perks.append(perk)
 
     return perks

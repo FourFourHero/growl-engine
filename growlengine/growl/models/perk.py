@@ -33,6 +33,10 @@ class Perk(BaseModel):
         json['name'] = self.name
         json['description'] = self.description
         json['choosable'] = str(self.choosable)
+        try:
+            json['perk_effect'] = self.perk_effect
+        except:
+            pass
         #json['created'] = str(self.created)
         #json['modified'] = str(self.modified)
 

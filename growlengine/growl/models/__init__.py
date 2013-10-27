@@ -3,6 +3,7 @@ from attribute import Attribute
 from developer import Developer
 from game import Game
 from perk import Perk
+from perkeffect import PerkEffect
 from player import Player
 from playerattribute import PlayerAttribute
 from playerperk import PlayerPerk
@@ -11,6 +12,7 @@ from playerskill import PlayerSkill
 from playerskilltrainingplan import PlayerSkillTrainingPlan
 from resource import Resource
 from skill import Skill
+from skilleffect import SkillEffect
 from skillgroup import SkillGroup
 
 def model_encode(obj):
