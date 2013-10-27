@@ -36,9 +36,8 @@ class Game(BaseModel):
         return json
 
 def post_save_cache(sender, **kwargs):
-    logger.debug('post_save start')
-    game = kwargs.get('instance')
-    store_game_in_cache(game)
-    logger.debug('post_save end')
+    instance = kwargs.get('instance')
+    store_game_in_cache(instance)
+    logger.debug('post save!')
 
 post_save.connect(post_save_cache, sender=Game)

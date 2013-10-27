@@ -10,13 +10,13 @@ def get_game_from_cache(game_id):
     key = _game_cache_key(game_id)
     game = cache.get(key)
     if not game:
-        logger.debug('game not found in cache')
+        logger.debug('cache: game not found: ' + game_id)
     return game
 
 def store_game_in_cache(game):
     key = _game_cache_key(game.id)
     cache.set(key, game, CACHE_TIMEOUT)
-    logger.debug('stored game in cache: ' + str(game))
+    logger.debug('cache: stored game: ' + str(game))
 
 def delete_game_from_cache(game_id):
     key = _game_cache_key(game_id)
@@ -27,4 +27,4 @@ def delete_game_from_cache(game_id):
 ###
 
 def _game_cache_key(game_id):
-    return 'growl' + ':' + 'Game'
+    return 'growl' + ':' + 'Game:' + game_id

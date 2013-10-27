@@ -3,6 +3,7 @@ import logging
 from django.db import models
 from django.db.models.signals import post_save
 from growl.models.basemodel import BaseModel
+from growl.caches.trait import store_trait_in_cache
 
 logger = logging.getLogger(__name__)
 
@@ -48,6 +49,7 @@ class Trait(BaseModel):
 
 def post_save_cache(sender, **kwargs):
     instance = kwargs.get('instance')
+    store_trait_in_cache(instance)
     logger.debug('post save!')
 
 post_save.connect(post_save_cache, sender=Trait)
