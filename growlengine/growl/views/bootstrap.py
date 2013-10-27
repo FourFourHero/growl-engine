@@ -11,6 +11,7 @@ from growl.api.attribute import create_attribute
 from growl.api.perk import create_perk
 from growl.api.perkeffect import create_perk_effect
 from growl.api.skill import create_skill
+from growl.api.skillgroup import create_skill_group
 
 logger = logging.getLogger(__name__)
 
@@ -114,11 +115,7 @@ def _create_resources(game):
 def _create_skill_groups(game):
     skill_groups = []
 
-    skill_group = SkillGroup()
-    skill_group.game = game
-    skill_group.name = 'Mental Prowess'
-    skill_group.description = 'Mental Process desc'
-    skill_group.save()
+    skill_group = create_skill_group(game, 'Mental Prowess', 'Mental Process desc')
     skill_groups.append(skill_group)
 
     return skill_groups
