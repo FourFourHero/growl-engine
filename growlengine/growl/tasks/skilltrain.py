@@ -13,6 +13,8 @@ from growl.api.playerskilltrainingplan import update_player_skill_training_plan
 
 logger = logging.getLogger(__name__)
 
+# TODO add lock so can only run once at a time
+
 @task()
 def task_skill_train():
     logger.debug('Training skills...')
