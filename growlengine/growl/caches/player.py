@@ -10,7 +10,7 @@ def get_player_from_cache(player_id):
     key = _player_cache_key(player_id)
     player = cache.get(key)
     if not player:
-        logger.debug('cache: player not found: ' + player_id)
+        logger.debug('cache: player not found: ' + str(player_id))
     return player
 
 def store_player_in_cache(player):

@@ -17,10 +17,10 @@ def create_player_attribute(game, player, attribute, value=None):
     return player_attribute
 
 ### Get player_attribute
-def get_player_attribute(player_attribute_id):
-    player_attribute = get_player_attribute_from_cache(player_attribute_id)
+def get_player_attribute(player_id, attribute_id):
+    player_attribute = get_player_attribute_from_cache(player_id, attribute_id)
     if not player_attribute:
-        player_attribute = PlayerAttribute.objects.get(pk=player_attribute_id)
+        player_attribute = PlayerAttribute.objects.get(player_id=player_id, attribute_id=attribute_id)
         store_player_attribute_in_cache(player_attribute)
     return player_attribute
 

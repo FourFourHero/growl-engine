@@ -10,7 +10,7 @@ def get_player_perk_from_cache(player_perk_id):
     key = _player_perk_cache_key(player_perk_id)
     player_perk = cache.get(key)
     if not player_perk:
-        logger.debug('cache: player_perk not found: ' + player_perk_id)
+        logger.debug('cache: player_perk not found: ' + str(player_perk_id))
     return player_perk
 
 def store_player_perk_in_cache(player_perk):

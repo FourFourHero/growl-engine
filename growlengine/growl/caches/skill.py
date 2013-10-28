@@ -10,7 +10,7 @@ def get_skill_from_cache(skill_id):
     key = _skill_cache_key(skill_id)
     skill = cache.get(key)
     if not skill:
-        logger.debug('cache: skill not found: ' + skill_id)
+        logger.debug('cache: skill not found: ' + str(skill_id))
     return skill
 
 def store_skill_in_cache(skill):

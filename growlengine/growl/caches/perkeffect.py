@@ -10,7 +10,7 @@ def get_perk_effect_from_cache(perk_effect_id):
     key = _perk_effect_cache_key(perk_effect_id)
     perk_effect = cache.get(key)
     if not perk_effect:
-        logger.debug('cache: perk_effect not found: ' + perk_effect_id)
+        logger.debug('cache: perk_effect not found: ' + str(perk_effect_id))
     return perk_effect
 
 def store_perk_effect_in_cache(perk_effect):

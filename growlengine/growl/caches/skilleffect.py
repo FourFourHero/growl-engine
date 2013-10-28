@@ -10,7 +10,7 @@ def get_skill_effect_from_cache(skill_effect_id):
     key = _skill_effect_cache_key(skill_effect_id)
     skill_effect = cache.get(key)
     if not skill_effect:
-        logger.debug('cache: skill_effect not found: ' + skill_effect_id)
+        logger.debug('cache: skill_effect not found: ' + str(skill_effect_id))
     return skill_effect
 
 def store_skill_effect_in_cache(skill_effect):

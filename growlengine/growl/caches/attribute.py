@@ -10,7 +10,7 @@ def get_attribute_from_cache(attribute_id):
     key = _attribute_cache_key(attribute_id)
     attribute = cache.get(key)
     if not attribute:
-        logger.debug('cache: attribute not found: ' + attribute_id)
+        logger.debug('cache: attribute not found: ' + str(attribute_id))
     return attribute
 
 def store_attribute_in_cache(attribute):

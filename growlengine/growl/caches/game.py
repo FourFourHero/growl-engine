@@ -10,7 +10,7 @@ def get_game_from_cache(game_id):
     key = _game_cache_key(game_id)
     game = cache.get(key)
     if not game:
-        logger.debug('cache: game not found: ' + game_id)
+        logger.debug('cache: game not found: ' + str(game_id))
     return game
 
 def store_game_in_cache(game):

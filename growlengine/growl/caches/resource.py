@@ -10,7 +10,7 @@ def get_resource_from_cache(resource_id):
     key = _resource_cache_key(resource_id)
     resource = cache.get(key)
     if not resource:
-        logger.debug('cache: resource not found: ' + resource_id)
+        logger.debug('cache: resource not found: ' + str(resource_id))
     return resource
 
 def store_resource_in_cache(resource):

@@ -10,7 +10,7 @@ def get_skill_group_from_cache(skill_group_id):
     key = _skill_group_cache_key(skill_group_id)
     skill_group = cache.get(key)
     if not skill_group:
-        logger.debug('cache: skill_group not found: ' + skill_group_id)
+        logger.debug('cache: skill_group not found: ' + str(skill_group_id))
     return skill_group
 
 def store_skill_group_in_cache(skill_group):
