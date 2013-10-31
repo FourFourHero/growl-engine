@@ -3,8 +3,8 @@ from django.core.cache import cache
 
 logger = logging.getLogger(__name__)
 
-# forever
-CACHE_TIMEOUT = None
+# 24 hours
+CACHE_TIMEOUT = 86400
 
 def get_player_resource_from_cache(player_resource_id):
     key = _player_resource_cache_key(player_resource_id)
