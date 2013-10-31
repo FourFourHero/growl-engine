@@ -1,6 +1,7 @@
 from bootstrap import bootstrap
 from train import train_inject_skill
 from train import train_train_skill
+from train import train_cancel_train_skill
 
 def get_error_dict(http_status_code=400):
     error_dict = _get_response_dict()

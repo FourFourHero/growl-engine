@@ -5,6 +5,7 @@ from django.core.exceptions import ObjectDoesNotExist
 from growl.models import PlayerSkillTrainingPlan
 from growl.caches.playerskilltrainingplan import get_player_skill_training_plan_from_cache
 from growl.caches.playerskilltrainingplan import store_player_skill_training_plan_in_cache
+from growl.caches.playerskilltrainingplan import delete_player_skill_training_plan_from_cache
 
 logger = logging.getLogger(__name__)
 
@@ -33,6 +34,11 @@ def get_player_skill_training_plan(player_id):
 def update_player_skill_training_plan(player_skill_training_plan):
     player_skill_training_plan.save() # post_save stores in cache
     return player_skill_training_plan
+
+### Delete player_skill_training_plan
+def delete_player_skill_training_plan(player_skill_training_plan):
+    delete_player_skill_training_plan_from_cache(player_skill_training_plan.player_id)
+    player_skill_training_plan.delete()
 
 ### Get all active
 def get_active_player_skill_training_plans():
