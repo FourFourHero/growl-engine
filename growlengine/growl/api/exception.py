@@ -1,0 +1,3 @@
+
+class GrowlException(Exception):
+    pass
